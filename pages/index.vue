@@ -1,5 +1,16 @@
 <script setup>
-import { HandRaisedIcon } from '@heroicons/vue/24/solid'
+import { HandRaisedIcon } from '@heroicons/vue/24/solid';
+</script>
+
+<script>
+import marked from 'marked';
+export default {
+    computed: {
+        markdown() {
+            return marked(this.$content('pages/index').text)
+        }
+    }
+}
 </script>
 
 <template>
