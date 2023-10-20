@@ -2,17 +2,6 @@
 import { HandRaisedIcon } from '@heroicons/vue/24/solid';
 </script>
 
-<script>
-import marked from 'marked';
-export default {
-    computed: {
-        markdown() {
-            return marked(this.$content('pages/index').text)
-        }
-    }
-}
-</script>
-
 <template>
     <section>
         <div class="flex flex-row">
@@ -30,4 +19,11 @@ export default {
     </div>
     <img src="~/assets/images/loremPicsum1.jpg" alt="loremPicsum1" class="w-1/2 md:max-w-sm p-8 mx-auto" />
     </section>
+
+    <section>
+    <h2 class="text-3xl font-bold mt-8">Latest Blog Posts</h2>
+    <div class="grid md:grid-cols-3 pt-8 gap-10">
+      <Post :posts="posts" />
+    </div>
+  </section>
 </template>
