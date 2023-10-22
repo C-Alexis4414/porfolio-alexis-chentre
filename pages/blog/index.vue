@@ -1,8 +1,10 @@
 <script setup>
-    const { data: posts } = await useAsyncData('posts', () => {
-        queryContent('/blog').find();
-    })
-</script>
+const { data: posts } = await useAsyncData('latest-posts', () =>
+  queryContent('/blog')
+    .sort({ data: 1 })
+    .limit(3)
+    .find()
+)</script>
 
 <template>
     <h1 class="text-3xl my-8">Blog Posts</h1>
