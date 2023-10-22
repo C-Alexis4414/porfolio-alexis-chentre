@@ -5,13 +5,25 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
     '@nuxt/content',
-    '@tailwindcss/typography'
+    '@tailwindcss/typography',
+    '@nuxtjs/apollo'
   ],
+  runtimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN
+  },
   content: {
     // https://content.nuxtjs.org/api/configuration
     highlight: {
       theme: 'nord',
       preload: ['ts','js','css','java','json','bash','vue']
+    }
+  },
+  apollo: {
+    clients: {
+      default: {
+        tokenName: 'github-token',
+        httpEndpoint: 'https://api.github.com/graphql'
+      }
     }
   }
 })
