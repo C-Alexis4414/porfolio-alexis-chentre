@@ -8,9 +8,10 @@ export default defineNuxtConfig({
     '@tailwindcss/typography'
   ],
   content: {
+    // https://content.nuxtjs.org/api/configuration
     highlight: {
       theme: 'nord',
-      preload: ['ts', 'js', 'json', 'java', 'css', 'bash', 'vue']
+      preload: ['ts','js','css','java','json','bash','vue']
     }
   }
 })

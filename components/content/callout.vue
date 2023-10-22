@@ -2,7 +2,7 @@
 const props = defineProps({
   title: {
     type: String,
-    default: 'Callout'
+    default: 'callout'
   }
 })
 </script>
