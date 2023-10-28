@@ -1,4 +1,3 @@
-import { Sitefooter } from './.nuxt/components';
 <template>
   <div class="flex flex-col min-h-screen">
     <siteheader />
