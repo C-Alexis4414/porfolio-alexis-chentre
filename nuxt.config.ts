@@ -6,8 +6,13 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxt/content',
     '@tailwindcss/typography',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxtjs/color-mode'
   ],
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
+    },
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN
   },
