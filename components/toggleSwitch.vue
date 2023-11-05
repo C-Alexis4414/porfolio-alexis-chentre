@@ -1,29 +1,45 @@
+<script setup lang="ts">
+import {  useColorMode, useCycleList } from '@vueuse/core'
+import { watchEffect } from 'vue-demi'
+
+const mode = useColorMode({
+  emitAuto: true,
+  modes: {
+    contrast: 'dark contrast',
+    cafe: 'cafe',
+  },
+})
+
+const { state, next } = useCycleList(['dark', 'light', 'cafe', 'contrast', 'auto'], { initialValue: mode })
+
+watchEffect(() => mode.value = state.value as any)
+</script>
+
 <template>
-    <select
-        v-model="colorMode.preference"
-        class="border w-24 h-8 dark:bg-gray-900 dark:text-white dark:border-gray-700"
-      >
-        <option value="system">System</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+
+    <button @click="next()">
+      <i v-if="state === 'dark'" i-carbon-moon inline-block align-middle class="align-middle" />
+      <i v-if="state === 'light'" i-carbon-sun inline-block align-middle class="align-middle" />
+      <i v-if="state === 'cafe'" i-carbon-cafe inline-block align-middle class="align-middle" />
+      <i v-if="state === 'contrast'" i-carbon-contrast inline-block align-middle class="align-middle" />
+      <i v-if="state === 'auto'" i-carbon-laptop inline-block align-middle class="align-middle" />
+
+      <span class="ml-2 capitalize">{{ state }}</span>
+    </button>
+
+  <span class="p-4 opacity-50">← Click to change the color mode</span>
 </template>
-  
-  <script setup lang="ts">
-    const colorMode = useColorMode()
-  </script>
 
 <style>
-body {
-  background-color: #fff;
-  color: rgba(0,0,0,0.8);
+html.cafe {
+  filter: sepia(0.9) hue-rotate(315deg) brightness(0.9);
 }
-.dark-mode body {
-  background-color: #091a28;
-  color: #ebf4f1;
+
+html.contrast {
+  filter: contrast(2);
 }
-.sepia-mode body {
-  background-color: #f1e7d0;
-  color: #433422;
+
+html.dark {
+  color-scheme: dark;
 }
 </style>
