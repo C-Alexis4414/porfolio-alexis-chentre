@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SunIcon } from '@heroicons/vue/24/solid';
 import {  useColorMode, useCycleList } from '@vueuse/core'
 import { watchEffect } from 'vue-demi'
 
@@ -18,7 +19,7 @@ watchEffect(() => mode.value = state.value as any)
 <template>
 
     <button @click="next()">
-      <i v-if="state === 'dark'" i-carbon-moon inline-block align-middle class="align-middle" />
+      <span v-if="state === 'dark'"><SunIcon class="h-6 w-6 text-blue-500"/></span>
       <i v-if="state === 'light'" i-carbon-sun inline-block align-middle class="align-middle" />
       <i v-if="state === 'cafe'" i-carbon-cafe inline-block align-middle class="align-middle" />
       <i v-if="state === 'contrast'" i-carbon-contrast inline-block align-middle class="align-middle" />
@@ -36,7 +37,7 @@ html.cafe {
 }
 
 html.contrast {
-  filter: contrast(2);
+  filter: contrast(1.5);
 }
 
 html.dark {
