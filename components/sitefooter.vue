@@ -16,5 +16,6 @@ const links = [
                 </a>
             </div>
         </section>
+        <contact />
     </footer>
 </template>
