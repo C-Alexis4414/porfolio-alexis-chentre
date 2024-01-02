@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { SunIcon } from '@heroicons/vue/24/solid';
+import { MoonIcon } from '@heroicons/vue/24/solid';
 import {  useColorMode, useCycleList } from '@vueuse/core'
 import { watchEffect } from 'vue-demi'
+import { Icon } from '@iconify/vue';
 
 const mode = useColorMode({
   emitAuto: true,
@@ -14,18 +16,19 @@ const mode = useColorMode({
 const { state, next } = useCycleList(['dark', 'light', 'cafe', 'contrast', 'auto'], { initialValue: mode })
 
 watchEffect(() => mode.value = state.value as any)
+
 </script>
 
 <template>
 
-    <button @click="next()">
-      <span v-if="state === 'dark'"><SunIcon class="h-6 w-6 text-blue-500"/></span>
-      <i v-if="state === 'light'" i-carbon-sun inline-block align-middle class="align-middle" />
-      <i v-if="state === 'cafe'" i-carbon-cafe inline-block align-middle class="align-middle" />
-      <i v-if="state === 'contrast'" i-carbon-contrast inline-block align-middle class="align-middle" />
-      <i v-if="state === 'auto'" i-carbon-laptop inline-block align-middle class="align-middle" />
+    <button @click="next()" class="w-52 h-7 bg-neutral-500 rounded-md flex items-center justify-center">
+        <span v-if="state === 'dark'"><Icon icon="pixelarticons:moon" class="h-3 w-3 fill-white bg-contain bg-center"></Icon></span>
+        <span v-if="state === 'light'"><Icon icon="pixelarticons:sun" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'cafe'"><Icon icon="tabler:coffee" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'contrast'"><Icon icon="icon-park-solid:contrast" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'auto'"><Icon icon="clarity:computer-line" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
 
-      <span class="ml-2 capitalize">{{ state }}</span>
+        <span class="text-xs ml-2 capitalize bg-contain bg-center">{{ state }}</span>
     </button>
 
   <span class="p-4 opacity-50">← Click to change the color mode</span>
