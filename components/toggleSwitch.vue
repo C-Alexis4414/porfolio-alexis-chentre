@@ -1,29 +1,49 @@
+<script setup lang="ts">
+import { SunIcon } from '@heroicons/vue/24/solid';
+import { MoonIcon } from '@heroicons/vue/24/solid';
+import {  useColorMode, useCycleList } from '@vueuse/core'
+import { watchEffect } from 'vue-demi'
+import { Icon } from '@iconify/vue';
+
+const mode = useColorMode({
+  emitAuto: true,
+  modes: {
+    contrast: 'dark contrast',
+    cafe: 'cafe',
+  },
+})
+
+const { state, next } = useCycleList(['dark', 'light', 'cafe', 'contrast', 'auto'], { initialValue: mode })
+
+watchEffect(() => mode.value = state.value as any)
+
+</script>
+
 <template>
-    <select
-        v-model="colorMode.preference"
-        class="border w-24 h-8 dark:bg-gray-900 dark:text-white dark:border-gray-700"
-      >
-        <option value="system">System</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+
+    <button @click="next()" class="w-52 h-7 bg-neutral-500 rounded-md flex items-center justify-center">
+        <span v-if="state === 'dark'"><Icon icon="pixelarticons:moon" class="h-3 w-3 fill-white bg-contain bg-center"></Icon></span>
+        <span v-if="state === 'light'"><Icon icon="pixelarticons:sun" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'cafe'"><Icon icon="tabler:coffee" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'contrast'"><Icon icon="icon-park-solid:contrast" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+        <span v-if="state === 'auto'"><Icon icon="clarity:computer-line" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
+
+        <span class="text-xs ml-2 capitalize bg-contain bg-center">{{ state }}</span>
+    </button>
+
+  <span class="p-4 opacity-50">← Click to change the color mode</span>
 </template>
-  
-  <script setup lang="ts">
-    const colorMode = useColorMode()
-  </script>
 
 <style>
-body {
-  background-color: #fff;
-  color: rgba(0,0,0,0.8);
+html.cafe {
+  filter: sepia(0.9) hue-rotate(315deg) brightness(0.9);
 }
-.dark-mode body {
-  background-color: #091a28;
-  color: #ebf4f1;
+
+html.contrast {
+  filter: contrast(1.5);
 }
-.sepia-mode body {
-  background-color: #f1e7d0;
-  color: #433422;
+
+html.dark {
+  color-scheme: dark;
 }
 </style>
