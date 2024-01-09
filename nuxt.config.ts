@@ -7,8 +7,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@tailwindcss/typography',
     '@nuxtjs/apollo',
-    '@vueuse/nuxt',
-    '@nuxtjs/color-mode'
   ],
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN
