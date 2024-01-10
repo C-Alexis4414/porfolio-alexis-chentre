@@ -20,7 +20,7 @@ watchEffect(() => mode.value = state.value as any)
 <template>
 
     <button @click="next()" class="w-52 h-7 bg-neutral-500 rounded-md flex items-center justify-center">
-        <span v-if="state === 'dark'"><Icon icon="pixelarticons:moon" class="h-3 w-3 fill-white bg-contain bg-center"></Icon></span>
+        <span v-if="state === 'dark'"><Icon icon="pixelarticons:moon" class="h-3 w-3 fill-white bg-contain bg-center"/></span>
         <span v-if="state === 'light'"><Icon icon="pixelarticons:sun" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
         <span v-if="state === 'cafe'"><Icon icon="tabler:coffee" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
         <span v-if="state === 'contrast'"><Icon icon="icon-park-solid:contrast" class="h-3 w-3 fill-white  bg-contain bg-center"/></span>
