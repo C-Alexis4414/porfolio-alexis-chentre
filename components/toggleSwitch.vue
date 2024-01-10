@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { SunIcon } from '@heroicons/vue/24/solid';
-import { MoonIcon } from '@heroicons/vue/24/solid';
 import {  useColorMode, useCycleList } from '@vueuse/core'
 import { watchEffect } from 'vue-demi'
 import { Icon } from '@iconify/vue';
@@ -31,7 +29,6 @@ watchEffect(() => mode.value = state.value as any)
         <span class="text-xs ml-2 capitalize bg-contain bg-center">{{ state }}</span>
     </button>
 
-  <span class="p-4 opacity-50">← Click to change the color mode</span>
 </template>
 
 <style>
