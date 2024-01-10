@@ -9,7 +9,13 @@ export default defineNuxtConfig({
     '@nuxtjs/apollo',
   ],
   runtimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN
+    githubToken: process.env.GITHUB_TOKEN,
+    public: {
+      serviceId: process.env.SERVICE_ID,
+      templateId: process.env.TEMPLATE_ID,
+      userId: process.env.USER_ID
+  
+    }
   },
   content: {
     // https://content.nuxtjs.org/api/configuration

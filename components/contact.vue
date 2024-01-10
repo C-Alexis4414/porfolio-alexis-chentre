@@ -12,21 +12,17 @@
 
 <script>
 import emailjs from '@emailjs/browser';
-import 'dotenv/config';
-
-const serviceId = process.env.SERVICE_ID;
-const templateId = process.env.TEMPLATE_ID;
-const userId = process.env.USER_ID;
 
 export default {
 methods: {
     sendEmail() {
-    emailjs.sendForm(serviceId, templateId, this.$refs.form, userId)
+    const config = useRuntimeConfig();
+    emailjs.sendForm(config.public.serviceId, config.public.templateId, this.$refs.form, config.public.userId)
         .then((result) => {
             console.log('SUCCESS!', result.text);
             console.log("message sent")
         }, (error) => {
-            console.log('FAILED...', error.text);
+            console.log('FAILED...', error);
         });
     }
 }
