@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxtjs/apollo": "^5.0.0-alpha.7",
+    "@nuxtjs/apollo": "^5.0.0-alpha.11",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@tailwindcss/typography": "^0.5.10",
     "@vueuse/core": "^10.7.1",
@@ -24,9 +24,13 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@nuxt/content": "^2.8.5",
+    "@nuxt/http": "^0.6.4",
     "@nuxtjs/dotenv": "^1.4.2",
     "@vueform/vueform": "^1.5.4",
+    "axios": "^1.6.5",
     "dotenv": "^16.3.1",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
     "is-buffer": "^2.0.5",
     "postcss": "^8.4.31",
     "vue-router": "^4.2.5"
