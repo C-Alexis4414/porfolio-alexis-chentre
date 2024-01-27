@@ -50,6 +50,10 @@ const markdownToHtml = (markdown) => {
             <h2 class="text-2xl text-indigo-800 font-semibold mb-2 hover:underline">{{ project.name }}</h2>
           </a>
           <p>{{ project.description }}</p>
+          <div v-if="project.name === 'projet-collectif-microblogging-alexis-eline-myriam-quentin'">
+          <img src="https://cdn.pixabay.com/photo/2016/11/09/23/16/music-1813100_1280.png" alt="Image projet">
+          </div>
+          <div v-else>Aucune image trouvée</div>
           <div v-html="markdownToHtml(project.namereadme?.text)"></div>
           <div class="mt-4">
             <p>
