@@ -15,7 +15,6 @@ export default defineNuxtConfig({
       serviceId: process.env.SERVICE_ID,
       templateId: process.env.TEMPLATE_ID,
       userId: process.env.USER_ID
-  
     }
   },
   content: {
@@ -32,5 +31,6 @@ export default defineNuxtConfig({
         httpEndpoint: 'https://api.github.com/graphql'
       }
     }
-  }
+  },
+  buildModules: ['@nuxt/content'],
 })

@@ -1,5 +1,5 @@
 <script setup>
-
+import showdown from 'showdown';
 const query = gql`
 query  {
   viewer {
@@ -9,6 +9,11 @@ query  {
     ... on Repository {
       id
       name
+      namereadme: object(expression: "HEAD:README.md") {
+      ... on Blob {
+        text
+      }
+      }
       createdAt
       description
       url
@@ -26,10 +31,13 @@ query  {
 }
 `;
 
-const id = "R_kgDOK972GA";
 const project = ref([]);
-const { data } = await useAsyncQuery(query, { id });
+const { data } = await useAsyncQuery(query);
 project.value.push(data?.node);
+const markdownToHtml = (markdown) => {
+  const converter = new showdown.Converter();
+  return converter.makeHtml(markdown);
+};
 </script>
 
 <template>
@@ -42,6 +50,7 @@ project.value.push(data?.node);
             <h2 class="text-2xl text-indigo-800 font-semibold mb-2 hover:underline">{{ project.name }}</h2>
           </a>
           <p>{{ project.description }}</p>
+          <div v-html="markdownToHtml(project.namereadme?.text)"></div>
           <div class="mt-4">
             <p>
               <Icon name="fontisto:star" size="1.1rem" class="text-indigo-700" /> Stars: {{ project.stargazers?.totalCount }}
