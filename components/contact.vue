@@ -12,6 +12,7 @@
 
 <script>
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 export default {
 methods: {
@@ -21,8 +22,19 @@ methods: {
         .then((result) => {
             console.log('SUCCESS!', result.text);
             console.log("message sent")
+            Swal.fire({
+                icon: 'success',
+                title: 'Email sent successfully!',
+                showConfirmButton: false,
+                timer: 2000,
+            });
         }, (error) => {
             console.log('FAILED...', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed to send email.',
+                text: 'Please try again later.',
+            });
         });
     }
 }
