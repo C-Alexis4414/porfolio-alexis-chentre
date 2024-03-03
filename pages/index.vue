@@ -16,6 +16,7 @@ const { data: posts } = await useAsyncData('latest-posts', () =>
         </div>
         <p class="text-base text-lime-200 m-4 italic">Développeur web</p>
     </section>
+    <CardProfilPicture />
     <section class="flex flex-col md:flex-row">
         <div class="md:3/4">
         <h2 class="text-3xl font bold mt-8">About</h2>
