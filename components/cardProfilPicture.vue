@@ -1,19 +1,54 @@
 <template>
-        <div id="card">
-            <div id="card-front" class="absolute backface-hidden">
-                <img src="~/assets/images/Profile Picture Pro.jpg" alt="Photo de profil réelle">
+        <div class="card" @mouseover="flipCard" @mouseleave="unflipCard">
+            <div class="card-front">
+                <img class="rounded-2xl w-auto h-48" src="~/assets/images/Profile Picture Pro.jpg" alt="Photo de profil réelle">
             </div>
-            <div id="card-back" class="absolute backface-hidden">
-                <img src="~/assets/images/alexisAvatar.png" alt="Sticker Bitmoji">
+            <div class="card-back">
+                <img class="w-auto h-48" src="~/assets/images/alexisAvatar.png" alt="Sticker Bitmoji">
             </div>
         </div>
 </template>
 
-<style scoped>
-    #card:hover #card-front {
-        transform: rotateY(-180deg);
+<script>
+    export default {
+        data() {
+            return {
+                flipped: false,
+            };
+        },
+        methods: {
+            flipCard() {
+                this.flipped = true;
+            },
+            unflipCard() {
+                this.flipped = false;
+            },
+        },
+    
     }
-    #card:hover #card-back {
+</script>
+
+<style scoped lang="scss">
+    .card {
+        perspective: 1000px;
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        backface-visibility: hidden;
+        transition: transform 0.5s;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+    }
+
+    .card:hover .card-front {
+        transform: rotateY(180deg);
+    }
+
+    .card:hover .card-back {
         transform: rotateY(0deg);
     }
 </style>
