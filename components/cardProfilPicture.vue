@@ -1,10 +1,10 @@
 <template>
         <div class="card" @mouseover="flipCard" @mouseleave="unflipCard">
             <div class="card-front">
-                <img class="rounded-2xl w-auto h-48" src="~/assets/images/Profile Picture Pro.jpg" alt="Photo de profil réelle">
+                <img class="rounded-2xl w-auto h-48 md:flex-row" src="~/assets/images/Profile Picture Pro.jpg" alt="Photo de profil réelle">
             </div>
             <div class="card-back">
-                <img class="w-auto h-48" src="~/assets/images/alexisAvatar.png" alt="Sticker Bitmoji">
+                <img class="w-auto h-48 md:flex-row" src="~/assets/images/alexisAvatar.png" alt="Sticker Bitmoji">
             </div>
         </div>
 </template>
@@ -35,6 +35,7 @@
 
     .card-front,
     .card-back {
+        float: none;
         position: absolute;
         backface-visibility: hidden;
         transition: transform 0.5s;
