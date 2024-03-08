@@ -12,5 +12,16 @@ module.exports = {
     },
     plugins: [
       require('@tailwindcss/typography'),
+      function ({ addUtilities }) {
+        const newUtilities = {
+          '.backface-hidden': {
+            'backface-visibility': 'hidden',
+          },
+          '.perspective': {
+            'perspective': '1000px',
+          },
+        }
+        addUtilities(newUtilities, ['responsive', 'hover'])
+      }
     ],
   }
