@@ -5,7 +5,7 @@ query  {
   viewer {
     login
   }
-  nodes(ids: ["R_kgDOK5Okug", "R_kgDOKuQjpQ"]) {
+  nodes(ids: ["R_kgDOK5Okug", "R_kgDOKuQjpQ", "R_kgDOKlVaug", "R_kgDOKT9uAQ", "R_kgDOKT9rLQ"]) {
     ... on Repository {
       id
       name
@@ -45,16 +45,28 @@ const markdownToHtml = (markdown) => {
       <h1 class="text-3xl my-8">Projets</h1>
       <p class="text-lg mb-8">Voici mes projets d'école sur Github</p>
       <section class="grid grid-cols-1 gap-10">
-        <div v-for="project in data?.nodes" :key="project.id" class="p-8 border-4 my-4 rounded-lg hover:bg-gray-50">
+        <div v-for="project in data?.nodes" :key="project.id" class="p-8 border-4 my-4 rounded-lg hover:bg-gray-500">
           <a :href="data?.nodes?.url" target="_blank">
             <h2 class="text-2xl text-indigo-800 font-semibold mb-2 hover:underline">{{ project.name }}</h2>
           </a>
           <p>{{ project.description }}</p>
           <div v-if="project.name === 'microblogging-musicat'">
-          <img src="https://cdn.pixabay.com/photo/2016/11/09/23/16/music-1813100_1280.png" alt="Image projet">
+          <img src="~/assets/images/cat-on-armchair-with-music.png" alt="Image microblogging-musicat">
+          </div>
+          <div v-else-if="project.name === 'copameba'">
+          <img src="~/assets/images/COPAMEBA.png" alt="Image COPAMEBA">
+          </div>
+          <div v-else-if="project.name === 'the-dev-laces'">
+          <img src="~/assets/images/the-dev-laces.png" alt="Image the-dev-laces">
+          </div>
+          <div v-else-if="project.name === 'a-la-decouverte-du-systeme-solaire'">
+          <img src="~/assets/images/iss.png" alt="Image a-la-decouverte-du-systeme-solaire">
+          </div>
+          <div v-else-if="project.name === 'pico-resto'">
+          <img src="~/assets/images/burger-truck.jpg" alt="Image pico-resto">
           </div>
           <div v-else>Aucune image trouvée</div>
-          <div v-html="markdownToHtml(project.namereadme?.text)"></div>
+          <div class="overflow-y-auto h-64 border-2 rounded-md" v-html="markdownToHtml(project.namereadme?.text)"></div>
           <div class="mt-4">
             <p>
               <Icon name="fontisto:star" size="1.1rem" class="text-indigo-700" /> Stars: {{ project.stargazers?.totalCount }}
